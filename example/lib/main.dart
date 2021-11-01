@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:demo/widget_json.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/dynamic_widget_json_exportor.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -16,15 +17,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Dynamic Widget',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Dynamic Widget Demo'),
@@ -35,15 +27,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -53,16 +36,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
         appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
         ),
         body: CustomScrollView(slivers: [
@@ -70,13 +45,17 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
-                  RaisedButton(
+                  CupertinoButton(
+                    padding: EdgeInsets.zero,
+                    color: Colors.grey[600],
                     child: Text("Dynamic Widget Json String Export Example"),
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => JSONExporter()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => JSONExporter(),
+                        ),
+                      );
                     },
                   )
                 ]),
@@ -93,38 +72,41 @@ class _MyHomePageState extends State<MyHomePage> {
                 ElevatedButton(
                   child: Text("Container"),
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(containerJson)));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => CodeEditorPage(containerJson)));
                   },
                 ),
                 ElevatedButton(
                   child: Text("Row"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CodeEditorPage(rowJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(rowJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Column"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CodeEditorPage(columnJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(columnJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Text"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CodeEditorPage(textJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(textJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
@@ -133,312 +115,336 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(selectableTextJson)));
+                            builder: (context) => CodeEditorPage(selectableTextJson)));
                   },
                 ),
                 ElevatedButton(
                   child: Text("TextSpan"),
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(textSpanJson)));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => CodeEditorPage(textSpanJson)));
                   },
                 ),
                 ElevatedButton(
                   child: Text("Icon"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CodeEditorPage(iconJson)));
+                        context, MaterialPageRoute(builder: (context) => CodeEditorPage(iconJson)));
                   },
                 ),
                 ElevatedButton(
                   child: Text("DropCapText"),
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(dropCapTextJson)));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => CodeEditorPage(dropCapTextJson)));
                   },
                 ),
                 ElevatedButton(
                   child: Text("DropCapText with Image"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(dropCapTextImageJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(dropCapTextImageJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("RaisedButton"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(raisedButtonJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(raisedButtonJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("ElevatedButton"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(elevatedButtonJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(elevatedButtonJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("TextButton"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(textButtonJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(textButtonJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Asset Image"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(assetImageJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(assetImageJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Network Image"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(networkImageJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(networkImageJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Placeholder"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(placeholderJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(placeholderJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("GridView"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(gridviewJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(gridviewJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("ListView"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(listviewJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(listviewJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("PageView"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(pageviewJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(pageviewJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Expanded"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(expandedJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(expandedJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("ListView Auto load more"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(listviewLoadmoreJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(listviewLoadmoreJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("GridView Auto load more"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(gridviewloadmoreJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(gridviewloadmoreJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Stack and Positioned"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CodeEditorPage(stackJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(stackJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("IndexedStack"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(indexedstackJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(indexedstackJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("SizedBox"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(sizedboxJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(sizedboxJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Opacity"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CodeEditorPage(opacityJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(opacityJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Wrap"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CodeEditorPage(wrapJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(wrapJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("ClipRRect"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(cliprrectJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(cliprrectJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("SafeArea"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(safeareaJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(safeareaJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("ListTile"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(listTileJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(listTileJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Scaffold & AppBar"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(scaffoldAppBarJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(scaffoldAppBarJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("LimitedBox"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(limitedboxJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(limitedboxJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Offstage"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(offstageJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(offstageJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("OverflowBox"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(overflowboxJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(overflowboxJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Divider"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CodeEditorPage(dividerJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(dividerJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("RotatedBox"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                CodeEditorPage(rotatedBoxJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(rotatedBoxJson),
+                      ),
+                    );
                   },
                 ),
                 ElevatedButton(
                   child: Text("Card"),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CodeEditorPage(cardJson)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(cardJson),
+                      ),
+                    );
                   },
                 ),
               ]),
@@ -480,8 +486,7 @@ class _CodeEditorPageState extends State<CodeEditorPage> {
               child: Container(
                 margin: EdgeInsets.all(8),
                 padding: EdgeInsets.all(8),
-                constraints: BoxConstraints.expand(
-                    width: double.infinity, height: double.infinity),
+                constraints: BoxConstraints.expand(width: double.infinity, height: double.infinity),
                 child: TextField(
                   controller: controller,
                   decoration: InputDecoration(hintText: 'Enter json string'),
@@ -492,18 +497,23 @@ class _CodeEditorPageState extends State<CodeEditorPage> {
             SizedBox(
               height: 8,
             ),
-            RaisedButton(
-              child: Text("Preview"),
-              onPressed: () {
-                setState(() {
-                  jsonString = controller.text;
-                });
-                Navigator.push(
+            SafeArea(
+              child: CupertinoButton(
+                color: Colors.blueAccent,
+                child: Text("Preview"),
+                onPressed: () {
+                  setState(() {
+                    jsonString = controller.text;
+                  });
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => PreviewPage(controller.text)));
-              },
-            )
+                      builder: (context) => PreviewPage(controller.text),
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ));
     controller.text = jsonString;
@@ -527,42 +537,55 @@ class PreviewPage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text("Preview"),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: FutureBuilder<Widget?>(
-              future: _buildWidget(context),
-              builder: (BuildContext context, AsyncSnapshot<Widget?> snapshot) {
-                if (snapshot.hasError) {
-                  print(snapshot.error);
-                }
-                return snapshot.hasData
-                    ? _exportor = DynamicWidgetJsonExportor(
-                        child: snapshot.data,
-                      )
-                    : Text("Loading...");
-              },
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: FutureBuilder<Widget?>(
+                future: _buildWidget(context),
+                builder: (BuildContext context, AsyncSnapshot<Widget?> snapshot) {
+                  if (snapshot.hasError) {
+                    print(snapshot.error);
+                  }
+                  return snapshot.hasData
+                      ? _exportor = DynamicWidgetJsonExportor(
+                          child: snapshot.data,
+                        )
+                      : Text("Loading...");
+                },
+              ),
             ),
-          ),
-          RaisedButton(
-            onPressed: () {
-              var exportJsonString = _exportor?.exportJsonString();
-              if (exportJsonString!=null)
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(exportJsonString)));
-            },
-            child: Text("export json code"),
-          )
-        ],
+            Padding(padding: EdgeInsets.only(top: 10)),
+            SafeArea(
+              child: CupertinoButton(
+                color: Colors.blueAccent,
+                onPressed: () {
+                  var exportJsonString = _exportor?.exportJsonString();
+                  if (exportJsonString != null)
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(exportJsonString),
+                      ),
+                    );
+                },
+                child: Text("export json code"),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Future<Widget?> _buildWidget(BuildContext context) async {
     return DynamicWidgetBuilder.build(
-        jsonString, context, new DefaultClickListener());
+      jsonString,
+      context,
+      new DefaultClickListener(),
+    );
   }
 }
 
@@ -585,8 +608,6 @@ class _JSONExporterState extends State<JSONExporter> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text("export example"),
       ),
       body: Builder(
@@ -610,22 +631,22 @@ class _JSONExporterState extends State<JSONExporter> {
                   ),
                 ),
               ),
-              Container(
-                child: RaisedButton(
+              SafeArea(
+                child: CupertinoButton(
+                  color: Colors.blue,
                   child: Text("Export"),
                   onPressed: () {
-                    var exportor =
-                        key.currentWidget as DynamicWidgetJsonExportor;
+                    var exportor = key.currentWidget as DynamicWidgetJsonExportor;
                     var exportJsonString = exportor.exportJsonString();
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                        content:
-                            Text("json string was exported to editor page.")));
+                    Scaffold.of(context).showSnackBar(
+                        SnackBar(content: Text("json string was exported to editor page.")));
                     Future.delayed(Duration(seconds: 1), () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  CodeEditorPage(exportJsonString)));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(exportJsonString),
+                        ),
+                      );
                     });
                   },
                 ),
